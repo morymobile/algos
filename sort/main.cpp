@@ -9,6 +9,7 @@
 #include "bubble_sort.h"
 #include "insertion_sort.h"
 #include "selection_sort.h"
+#include "merge_sort.h"
 
 
 bool isSorted(const std::vector<int> &nums)
@@ -54,6 +55,7 @@ void sortAndVerifyAll(const std::string &s)
     sortAndVerify(nums, &BubbleSort::sort, "BubbleSort");
     sortAndVerify(nums, &InsertionSort::sort, "InsertionSort");
     sortAndVerify(nums, &SelectionSort::sort, "SelectionSort");
+    sortAndVerify(nums, &MergeSort::sort, "MergeSort");
 }
 
 int main()
