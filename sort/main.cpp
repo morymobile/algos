@@ -7,10 +7,15 @@
 #include "../common/string_util.h"
 #include "quick_sort.h"
 #include "bubble_sort.h"
+#include "insertion_sort.h"
+#include "selection_sort.h"
 
 
 bool isSorted(const std::vector<int> &nums)
 {
+    if (nums.empty())
+        return true;
+
     for (std::vector<int>::const_iterator it = nums.begin(), prev = it++;
         it != nums.end(); ++it) {
         if (*prev > *it) {
@@ -47,6 +52,8 @@ void sortAndVerifyAll(const std::string &s)
     //TODO: Add new sort algo here
     sortAndVerify(nums, &QuickSort::sort, "QuickSort");
     sortAndVerify(nums, &BubbleSort::sort, "BubbleSort");
+    sortAndVerify(nums, &InsertionSort::sort, "InsertionSort");
+    sortAndVerify(nums, &SelectionSort::sort, "SelectionSort");
 }
 
 int main()
@@ -54,5 +61,7 @@ int main()
     sortAndVerifyAll("1, 2, 3, 4, 5, 6, 7, 9");
     sortAndVerifyAll("-1, -2, -3, -4, -5, -6, -7, -9");
     sortAndVerifyAll("-1, 5, 3, -8, 7, 2, 9, 4");
+    sortAndVerifyAll("1");
+    sortAndVerifyAll("");
     return 0;
 }
