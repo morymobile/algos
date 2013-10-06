@@ -7,28 +7,41 @@ namespace MergeSort {
 
 void merge(std::vector<int> &nums, int i, int j, int k)
 {
-    int s1 = i, e1 = j, s2 = j+1, e2 = k, a = 0;
-    std::vector<int> tmp(k-i+1, 0);
-    while (s1 <= e1 && s2 <= e2) {
-        if (nums[s1] <= nums[s2]) {
-            nums[a++] = nums[s1++];
+    std::vector<int> l1, l2;
+    std::copy(nums.begin()+i, nums.begin()+j+1, std::back_inserter(l1));
+    std::copy(nums.begin()+j+1, nums.begin()+k+1, std::back_inserter(l2));
+    int i1 = 0, i2 = 0;
+    for (int a = i; a < k+1; ++a) {
+        if (i1 < l1.size() && i2 < l2.size()) {
+            if (l1[i1] <= l2[i2]) {
+                nums[a] = l1[i1++];
+            } else {
+                nums[a] = l2[i2++];
+            }
         } else {
-            nums[a++] = nums[s2++];
+            if (i1 < l1.size())
+                nums[a] = l1[i1++];
+            else if (i2 < l2.size())
+                nums[a] = l2[i2++];
         }
     }
-    if (s1 < e1) {
-        s2 = s1;
-        e2 = e1;
-    }
-    while (s2 <= e2) {
-        tmp[a++] = nums[s2++];
-    }
+}
 
-    a = 0;
-    for (int b = i; b <= k; ++b) {
-        nums[b] == tmp[a++];
+/*
+void merge(std::vector<int> &nums, int i, int j, int k)
+{
+    int m = j+1;
+    for (int a = m; a <= k; ++a) {
+        for (int b = a-1; b >= i; --b) {
+            if (nums[b+1] < nums[b]) {
+                std::swap(nums[b+1], nums[b]);
+            } else {
+                break;
+            }
+        }
     }
 }
+*/
 
 void merge_sort(std::vector<int> &nums, int p, int q)
 {

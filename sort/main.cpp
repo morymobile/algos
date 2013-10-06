@@ -61,9 +61,22 @@ void sortAndVerifyAll(const std::string &s)
 int main()
 {
     sortAndVerifyAll("1, 2, 3, 4, 5, 6, 7, 9");
+    //<<<<<<< HEAD
     sortAndVerifyAll("-1, -2, -3, -4, -5, -6, -7, -9");
     sortAndVerifyAll("-1, 5, 3, -8, 7, 2, 9, 4");
     sortAndVerifyAll("1");
+    //=======
+    sortAndVerifyAll("1, 2, 3, 4, 5, 6, 7, 9, 10");
+    sortAndVerifyAll("-1, -2, -3, -4, -5, -6, -7, -9");
+    sortAndVerifyAll("-1, -2, -3, -4, -5, -6, -7, -9, -10");
+    sortAndVerifyAll("-1, 5, 3, -8, 7, 2, 9, 4");
+    sortAndVerifyAll("-1, 5, 3, -8, 7, 2, 9, 4, 3");
+    sortAndVerifyAll("1");
+    sortAndVerifyAll("1,2");
+    sortAndVerifyAll("2,1");
+    sortAndVerifyAll("2,1,3");
+    sortAndVerifyAll("3,1,2");
+    //>>>>>>> c3cafeef8a4d1b4d91cfbf70b4aa78c2e151a86a
     sortAndVerifyAll("");
     return 0;
 }
